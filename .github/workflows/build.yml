@@ -21,7 +21,7 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v4
       with:
-        packages: 'platforms;android-34 build-tools;34.0.0 platform-tools'
+        packages: 'platform-tools platforms;android-34 build-tools;34.0.0'
 
     - name: Build Android App Bundle (.aab)
       run: ./gradlew bundleRelease
@@ -30,4 +30,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: app-release
-        path: app/build/outputs/bundle/release/*.aab
+        path: app/build/outputs/bundle/releas
+        e/*.aab
