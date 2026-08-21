@@ -18,10 +18,8 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Accept Android Licenses & Setup Gradle
-      run: |
-        yes | sdkmanager --licenses || true
-        ./gradlew --version
+    - name: Setup Android SDK and Accept Licenses
+      uses: android-actions/setup-android@v3
 
     - name: Build Android App Bundle (.aab)
       run: ./gradlew bundleRelease
@@ -30,5 +28,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: app-release
-        path: app/build/outputs/bundle/releas
-        e/*.aab
+        path: app/build/outputs/bundle/release/*.aab
